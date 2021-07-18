@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Copying Texts in Clipboard | learn programming bangla</title>
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+      <div class="container">
+      <textarea id="copyText" cols="60" rows="5">Welcome to learn programming bangla.Lorem ipsum dolor sit amet consectetur adipiscing elit suspendisse tempus sapien morbi facilisis volutpat placerat, malesuada dignissim bibendum eu integer ut pharetra laoreet blandit nibh semper ante. Justo ad platea varius tellus bibendum fringilla erat metu.</textarea>
+      <br />
+      <div class="btn">
+         <button>copy in clipboard</button><span class="tooltip">copied</span>
+      </div>
+      <textarea cols="60" id="pasteText" placeholder="Paste your copied content here.." rows="5"></textarea>
+      <script>
+         const copyText = document.querySelector("#copyText");
+         const pasteText = document.querySelector("#pasteText");
+         const button = document.querySelector("button");
+         const tooltip = document.querySelector(".tooltip");
+         button.addEventListener('click', function(){
+           copyText.select();
+           pasteText.value = "";
+           tooltip.classList.add("show");
+           setTimeout(function(){
+             tooltip.classList.remove("show");
+           },700);
+           if(document.execCommand("copy")){
+             pasteText.focus();
+           }else{
+             alert("Something went wrong!");
+           }
+         });
+      </script>
+   </body>
+</html>
